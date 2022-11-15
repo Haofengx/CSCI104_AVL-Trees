@@ -139,7 +139,6 @@ protected:
 
     // Add helper functions here
     void insertFix(AVLNode<Key,Value>* p, AVLNode<Key,Value>* n);
-		bool zigzig(AVLNode<Key, Value>* n, AVLNode<Key, Value>* p, AVLNode<Key, Value>* g);
 		void rotateLeft(AVLNode<Key, Value>* n, AVLNode<Key, Value>* p);
 		void rotateRight(AVLNode<Key, Value>* n, AVLNode<Key, Value>* p);
 		void removeFix(AVLNode<Key, Value>* n, int8_t diff);
@@ -295,17 +294,6 @@ void AVLTree<Key, Value>:: insertFix(AVLNode<Key,Value>* p, AVLNode<Key,Value>* 
 	}
 }
 
-// helper function to determine whether the situation is zigzig or zigzag
-// return true if is zig-zig and return false if zig-zag
-template<class Key, class Value>
-bool AVLTree<Key, Value>:: zigzig(AVLNode<Key, Value>* n, AVLNode<Key, Value>* p, AVLNode<Key, Value>* g){
-	int8_t nbalance = n->getBalance();
-	int8_t pbalance = p->getBalance();
-	int8_t gbalance = g->getBalance();
-	if(nbalance >= pbalance && pbalance >= gbalance) return true;
-	else if(nbalance <= pbalance && pbalance <= gbalance) return true;
-	else return false;
-}
 
 // helper function to rotate nodes n,p,g and child nodes
 template<class Key, class Value>
